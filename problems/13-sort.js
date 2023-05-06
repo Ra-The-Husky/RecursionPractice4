@@ -22,8 +22,20 @@ sort([]); // []
 ***********************************************************************/
 
 function sort(nums, sorted = []) {
-    // Your code here
-}
+if (nums.length === 0) return sorted;
+let lowestNum = Infinity
+let curri = 0
 
+nums.forEach((elem,i) => {
+if (elem < lowestNum){
+    lowestNum = elem
+    curri = i
+}
+});
+sorted.push(lowestNum)
+nums.splice(curri,1)
+return sort(nums,sorted);
+}
+console.log(sort([0, 1, -3])); // [-3, 0, 1]
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 module.exports = sort;
